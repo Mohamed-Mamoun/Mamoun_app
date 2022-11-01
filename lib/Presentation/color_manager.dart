@@ -6,14 +6,21 @@ class ColorManager {
   static Color grey = HexColor.fromHex('#737477');
   static Color lightGrey = HexColor.fromHex('#9E9E9E');
   static Color primaryOpacity70 = HexColor.fromHex('#B3ED9728');
+  // // //
+  static Color darkPrimary = HexColor.fromHex("#d17d11");
+  static Color grey1 = HexColor.fromHex("#707070");
+  static Color grey2 = HexColor.fromHex("#797979");
+  static Color white = HexColor.fromHex("#FFFFFF");
+  static Color error = HexColor.fromHex("#e61f34");
+  static Color black = HexColor.fromHex("#000000");
 }
 
 extension HexColor on Color {
-  static Color fromHex(String HexColorCode) {
-    HexColorCode = HexColorCode.replaceAll('#', '');
-    if (HexColorCode.length == 6) {
-      HexColorCode = "FF$HexColorCode";
+  static Color fromHex(String hexColorCode) {
+    hexColorCode = hexColorCode.replaceAll('#', '');
+    if (hexColorCode.length == 6) {
+      hexColorCode = "FF$hexColorCode";
     }
-    return Color(int.parse(HexColorCode, radix: 16));
+    return Color(int.parse(hexColorCode, radix: 16));
   }
 }

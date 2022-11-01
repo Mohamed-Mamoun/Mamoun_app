@@ -7,16 +7,6 @@ class AppPadding {
   static const double p20 = 20.0;
 }
 
-// remember that this is a redundent class
-class AppMargin {
-  static const double m12 = 12.0;
-  static const double m14 = 14.0;
-  static const double m16 = 16.0;
-  static const double m17 = 17.0;
-  static const double m18 = 18.0;
-  static const double m20 = 20.0;
-}
-
 class Appsize {
   static const double s12 = 12.0;
   static const double s14 = 14.0;
