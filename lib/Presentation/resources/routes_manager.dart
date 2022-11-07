@@ -1,8 +1,9 @@
 import 'package:advance_course/Presentation/forget_password/forget_password.dart';
 import 'package:advance_course/Presentation/login/login.dart';
 import 'package:advance_course/Presentation/main/main.dart';
-import 'package:advance_course/Presentation/onBourding/onBourding.dart';
+import 'package:advance_course/Presentation/onBourding/onbourding.dart';
 import 'package:advance_course/Presentation/register/register.dart';
+import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/splash/splash.dart';
 import 'package:advance_course/Presentation/store_details/store_details.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +44,9 @@ class RoutesGenerator {
     return MaterialPageRoute(
         builder: (_) => Scaffold(
               appBar: AppBar(
-                title: const Text('Route Not Found'),
+                title: const Text(AppStrings.undefinedRoute),
               ),
-              body: const Center(child: Text('Route Not Found')),
+              body: const Center(child: Text(AppStrings.undefinedRoute)),
             ));
   }
 }
