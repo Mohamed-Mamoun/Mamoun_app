@@ -1,3 +1,5 @@
+const String imagesPath = 'assets/images';
+
 class AssetsManager {
-  static const String logoAsset = 'assets/images/splash_logo.png';
+  static const String logoAsset = '$imagesPath/splash_logo.png';
 }
