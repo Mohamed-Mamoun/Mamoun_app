@@ -9,12 +9,12 @@ import 'package:advance_course/Presentation/store_details/store_details.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
-  static const String splashRoute = '/';
-  static const String onBourdingRoute = '/onbourding';
-  static const String loginRoute = '/login';
-  static const String rigisterRoute = '/register';
   static const String forgetPasswordRoute = '/forgetPassword';
+  static const String loginRoute = '/login';
   static const String mainRoute = '/main';
+  static const String onBourdingRoute = '/onbourding';
+  static const String rigisterRoute = '/register';
+  static const String splashRoute = '/';
   static const String storeDetailsRoute = '/storeDetails';
 }
 

@@ -13,12 +13,10 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   Timer? _timer;
 
-  _delay() {
-    _timer = Timer(const Duration(seconds: 3), _navigate);
-  }
-
-  _navigate() {
-    Navigator.pushReplacementNamed(context, Routes.onBourdingRoute);
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
   }
 
   @override
@@ -27,10 +25,12 @@ class _SplashViewState extends State<SplashView> {
     _delay();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _timer?.cancel();
+  _delay() {
+    _timer = Timer(const Duration(seconds: 3), _navigate);
+  }
+
+  _navigate() {
+    Navigator.pushReplacementNamed(context, Routes.onBourdingRoute);
   }
 
   @override

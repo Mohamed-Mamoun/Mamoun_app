@@ -2,15 +2,6 @@ import 'package:advance_course/Presentation/resources/font_manager.dart';
 import 'package:flutter/cupertino.dart';
 
 class StylesManager {
-  TextStyle _getTextStyle(
-      double fontSize, String fontFamily, FontWeight fontWeight, Color color) {
-    return TextStyle(
-        fontSize: fontSize,
-        fontFamily: fontFamily,
-        color: color,
-        fontWeight: fontWeight);
-  }
-
   // Light Style
   TextStyle getLightStyle(
       {double fontSize = FontSize.s12, required Color color}) {
@@ -44,5 +35,14 @@ class StylesManager {
       {double fontSize = FontSize.s12, required Color color}) {
     return _getTextStyle(
         fontSize, FontFamilyManager.fontFamily, FontWeightManager.bold, color);
+  }
+
+  TextStyle _getTextStyle(
+      double fontSize, String fontFamily, FontWeight fontWeight, Color color) {
+    return TextStyle(
+        fontSize: fontSize,
+        fontFamily: fontFamily,
+        color: color,
+        fontWeight: fontWeight);
   }
 }
