@@ -3,7 +3,9 @@ import 'package:advance_course/Presentation/login/login.dart';
 import 'package:advance_course/Presentation/main/main.dart';
 import 'package:advance_course/Presentation/onBourding/onbourding.dart';
 import 'package:advance_course/Presentation/register/register.dart';
+import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
+import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:advance_course/Presentation/splash/splash.dart';
 import 'package:advance_course/Presentation/store_details/store_details.dart';
 import 'package:flutter/material.dart';
@@ -44,9 +46,18 @@ class RoutesGenerator {
     return MaterialPageRoute(
         builder: (_) => Scaffold(
               appBar: AppBar(
-                title: const Text(AppStrings.undefinedRoute),
+                title: Text(
+                  AppStrings.undefinedRoute,
+                  style: StylesManager().getReqularStyle(
+                      color: ColorManager.darkGrey, fontSize: 17),
+                ),
               ),
-              body: const Center(child: Text(AppStrings.undefinedRoute)),
+              body: Center(
+                  child: Text(
+                AppStrings.undefinedRoute,
+                style: StylesManager().getReqularStyle(
+                    color: ColorManager.darkGrey, fontSize: 22),
+              )),
             ));
   }
 }

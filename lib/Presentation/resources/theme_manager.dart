@@ -1,5 +1,4 @@
 import 'package:advance_course/Presentation/resources/color_manager.dart';
-import 'package:advance_course/Presentation/resources/font_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:advance_course/Presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +29,8 @@ class ThemeManager {
             shadowColor: ColorManager.primaryOpacity70,
             centerTitle: true,
             elevation: Appsize.s4,
-            titleTextStyle: StylesManager().getReqularStyle(
-                color: ColorManager.white, fontSize: FontSize.s16)),
+            titleTextStyle: StylesManager()
+                .getReqularStyle(color: ColorManager.white, fontSize: 16)),
 
         // Button Theme
         buttonTheme: ButtonThemeData(
@@ -43,47 +42,42 @@ class ThemeManager {
         // Elevated Button Theme
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-          backgroundColor: ColorManager.primary,
-          textStyle: StylesManager().getReqularStyle(color: ColorManager.white),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Appsize.s12),
-          ),
-        )),
+                elevation: 10,
+                shadowColor: ColorManager.darkGrey,
+                backgroundColor: ColorManager.primary,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 110, vertical: 3),
+                textStyle: StylesManager()
+                    .getReqularStyle(color: ColorManager.white, fontSize: 20),
+                shape: const StadiumBorder())),
 
         // Text Theme
         textTheme: TextTheme(
-            headline1: StylesManager().getSemiBoldStyle(
-                color: ColorManager.darkGrey, fontSize: FontSize.s16),
-            subtitle1:
+            displayLarge: StylesManager()
+                .getSemiBoldStyle(color: ColorManager.darkGrey, fontSize: 16),
+            titleMedium:
                 StylesManager().getMediumStyle(color: ColorManager.lightGrey),
-            caption:
+            bodySmall:
                 StylesManager().getReqularStyle(color: ColorManager.grey1)),
 
         // Input Decoration Theme
         inputDecorationTheme: InputDecorationTheme(
-          contentPadding: const EdgeInsets.all(AppPadding.p8),
-          helperStyle:
-              StylesManager().getReqularStyle(color: ColorManager.grey1),
+          contentPadding: const EdgeInsets.all(8),
+          helperStyle: StylesManager()
+              .getReqularStyle(color: ColorManager.grey1, fontSize: 14),
+          hintStyle: StylesManager()
+              .getMediumStyle(color: ColorManager.grey, fontSize: 16),
           labelStyle:
               StylesManager().getMediumStyle(color: ColorManager.darkGrey),
           errorStyle:
               StylesManager().getReqularStyle(color: ColorManager.error),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: ColorManager.grey,
-                width: Appsize.s1_5,
-              ),
-              borderRadius:
-                  const BorderRadius.all(Radius.circular(Appsize.s8))),
+          enabledBorder: UnderlineInputBorder(
+              borderSide:
+                  BorderSide(color: ColorManager.lightGrey, width: 2.5)),
 
           //  focused Border
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: ColorManager.primary,
-                width: Appsize.s1_5,
-              ),
-              borderRadius:
-                  const BorderRadius.all(Radius.circular(Appsize.s8))),
+          focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: ColorManager.primary, width: 2.5)),
 
           //  focused Error Border
           focusedErrorBorder: OutlineInputBorder(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FontFamilyManager {
-  static const String fontFamily = 'Montserrat';
+  static const String fontFamily = 'jannah';
 }
 
 class FontWeightManager {
@@ -12,11 +13,6 @@ class FontWeightManager {
   static const FontWeight semiBold = FontWeight.w600;
 }
 
-class FontSize {
-  static const double s12 = 12.0;
-  static const double s14 = 14.0;
-  static const double s16 = 16.0;
-  static const double s17 = 17.0;
-  static const double s18 = 18.0;
-  static const double s20 = 20.0;
+extension ResponsiveText on double {
+  double get sp => Get.width / 100 * (this / 3);
 }

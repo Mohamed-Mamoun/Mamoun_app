@@ -3,36 +3,31 @@ import 'package:flutter/cupertino.dart';
 
 class StylesManager {
   // Light Style
-  TextStyle getLightStyle(
-      {double fontSize = FontSize.s12, required Color color}) {
+  TextStyle getLightStyle({double fontSize = 12, required Color color}) {
     return _getTextStyle(
         fontSize, FontFamilyManager.fontFamily, FontWeightManager.light, color);
   }
 
   // Reqular Style
-  TextStyle getReqularStyle(
-      {double fontSize = FontSize.s12, required Color color}) {
+  TextStyle getReqularStyle({double fontSize = 12, required Color color}) {
     return _getTextStyle(fontSize, FontFamilyManager.fontFamily,
         FontWeightManager.reqular, color);
   }
 
   // Medium Style
-  TextStyle getMediumStyle(
-      {double fontSize = FontSize.s12, required Color color}) {
+  TextStyle getMediumStyle({double fontSize = 12, required Color color}) {
     return _getTextStyle(fontSize, FontFamilyManager.fontFamily,
         FontWeightManager.medium, color);
   }
 
   // Semi bold Style
-  TextStyle getSemiBoldStyle(
-      {double fontSize = FontSize.s12, required Color color}) {
+  TextStyle getSemiBoldStyle({double fontSize = 12, required Color color}) {
     return _getTextStyle(fontSize, FontFamilyManager.fontFamily,
         FontWeightManager.semiBold, color);
   }
 
   // bold Style
-  TextStyle getBoldStyle(
-      {double fontSize = FontSize.s12, required Color color}) {
+  TextStyle getBoldStyle({double fontSize = 12, required Color color}) {
     return _getTextStyle(
         fontSize, FontFamilyManager.fontFamily, FontWeightManager.bold, color);
   }

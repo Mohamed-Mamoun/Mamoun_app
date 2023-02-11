@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:advance_course/Presentation/resources/assets_manager.dart';
 import 'package:advance_course/Presentation/resources/routes_manager.dart';
+import 'package:advance_course/Presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -26,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
   }
 
   _delay() {
-    _timer = Timer(const Duration(seconds: 3), _navigate);
+    _timer = Timer(const Duration(seconds: 6), _navigate);
   }
 
   _navigate() {
@@ -35,9 +37,9 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Image(image: AssetImage(AssetsManager.logoAsset)),
+        child: Lottie.asset(AssetsManager.logoAsset, height: Appsize.s250),
       ),
     );
   }
