@@ -3,7 +3,10 @@ import 'package:flutter/cupertino.dart';
 
 class StylesManager {
   // Light Style
-  TextStyle getLightStyle({double fontSize = 12, required Color color}) {
+  TextStyle getLightStyle({
+    double fontSize = 12,
+    required Color color,
+  }) {
     return _getTextStyle(
         fontSize, FontFamilyManager.fontFamily, FontWeightManager.light, color);
   }

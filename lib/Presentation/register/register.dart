@@ -5,6 +5,7 @@ import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class RegisterView extends StatefulWidget {
@@ -22,7 +23,7 @@ class _RegisterViewState extends State<RegisterView> {
       builder: (controller) => Scaffold(
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 28),
+            padding: EdgeInsets.symmetric(horizontal: 28.w),
             child: SingleChildScrollView(
               child: Form(
                 key: controller.formKey,
@@ -31,14 +32,20 @@ class _RegisterViewState extends State<RegisterView> {
                   children: [
                     Text(
                       AppStrings.signUp.tr,
+                      textScaleFactor: 1,
                       style: StylesManager().getBoldStyle(
-                          color: ColorManager.darkPrimary, fontSize: 35),
+                          color: ColorManager.darkPrimary, fontSize: 35.sp),
                     ),
-                    const SizedBox(
-                      height: 30,
+                    SizedBox(
+                      height: 30.h,
                     ),
                     TextFormField(
                       controller: controller.nameCNTL,
+                      validator: (value) {
+                        if (value!.trim().isEmpty || value.trim() == null) {
+                          return AppStrings.validateName.tr;
+                        }
+                      },
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.person,
@@ -47,11 +54,16 @@ class _RegisterViewState extends State<RegisterView> {
                           border: InputBorder.none,
                           hintText: AppStrings.name.tr),
                     ),
-                    const SizedBox(
-                      height: 28,
+                    SizedBox(
+                      height: 25.h,
                     ),
                     TextFormField(
                       controller: controller.phoneCNTL,
+                      validator: (value) {
+                        if (value!.trim().isEmpty || value.trim() == null) {
+                          return AppStrings.validateNumber.tr;
+                        }
+                      },
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.phone,
@@ -60,11 +72,16 @@ class _RegisterViewState extends State<RegisterView> {
                           border: InputBorder.none,
                           hintText: AppStrings.phone.tr),
                     ),
-                    const SizedBox(
-                      height: 28,
+                    SizedBox(
+                      height: 25.h,
                     ),
                     TextFormField(
                       controller: controller.emailCNTL,
+                      validator: (value) {
+                        if (value!.trim().isEmpty || value.trim() == null) {
+                          return AppStrings.validateEmail.tr;
+                        }
+                      },
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.email,
@@ -73,12 +90,17 @@ class _RegisterViewState extends State<RegisterView> {
                           border: InputBorder.none,
                           hintText: AppStrings.email.tr),
                     ),
-                    const SizedBox(
-                      height: 28,
+                    SizedBox(
+                      height: 25.h,
                     ),
                     TextFormField(
                       controller: controller.passCNTL,
                       obscureText: controller.isPasswordShow,
+                      validator: (value) {
+                        if (value!.trim().isEmpty || value.trim() == null) {
+                          return AppStrings.validatePass.tr;
+                        }
+                      },
                       decoration: InputDecoration(
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -96,8 +118,8 @@ class _RegisterViewState extends State<RegisterView> {
                           border: InputBorder.none,
                           hintText: AppStrings.password.tr),
                     ),
-                    const SizedBox(
-                      height: 40,
+                    SizedBox(
+                      height: 40.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -110,19 +132,26 @@ class _RegisterViewState extends State<RegisterView> {
                             elevation: 10,
                             controller: controller.buttonCNTL,
                             onPressed: () async {
-                              controller.buttonCNTL.start();
-                              await Future.delayed(const Duration(seconds: 3));
-                              controller.buttonCNTL.stop();
-                              await Future.delayed(const Duration(seconds: 2));
-                              controller.buttonCNTL.success();
-                              await Future.delayed(const Duration(seconds: 2));
-                              controller.buttonCNTL.reset();
+                              if (controller.formKey.currentState!.validate()) {
+                                controller.buttonCNTL.start();
+                                await Future.delayed(
+                                    const Duration(seconds: 3));
+                                controller.buttonCNTL.stop();
+                                await Future.delayed(
+                                    const Duration(seconds: 2));
+                                controller.buttonCNTL.success();
+                                await Future.delayed(
+                                    const Duration(seconds: 2));
+                                controller.buttonCNTL.reset();
+                              } else {
+                                controller.buttonCNTL.reset();
+                              }
                             },
-                            child: Text(AppStrings.login2.tr))
+                            child: Text(AppStrings.signUp.tr))
                       ],
                     ),
-                    const SizedBox(
-                      height: 35,
+                    SizedBox(
+                      height: 30.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -130,17 +159,18 @@ class _RegisterViewState extends State<RegisterView> {
                         Text(
                           AppStrings.accountExist.tr,
                           style: StylesManager().getMediumStyle(
-                              color: ColorManager.lightGrey, fontSize: 18),
+                              color: ColorManager.lightGrey, fontSize: 18.sp),
                         ),
                         TextButton(
                           onPressed: () {
                             Get.back();
                           },
                           child: Text('  ${AppStrings.login.tr}',
+                              textScaleFactor: 1,
                               style: TextStyle(
                                   color: ColorManager.primary,
                                   fontFamily: FontFamilyManager.fontFamily,
-                                  fontSize: 18)),
+                                  fontSize: 18.sp)),
                         )
                       ],
                     ),

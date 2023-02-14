@@ -1,14 +1,16 @@
 import 'package:advance_course/Presentation/login/view_mode.dart';
 import 'package:advance_course/Presentation/register/register.dart';
+import 'package:advance_course/Presentation/resources/assets_manager.dart';
 import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/font_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
-import 'package:advance_course/Presentation/resources/values_manager.dart';
 import 'package:advance_course/Presentation/settings/setting.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+//
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class LoginView extends StatefulWidget {
@@ -26,23 +28,36 @@ class _LoginViewState extends State<LoginView> {
       builder: (controller) => Scaffold(
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Appsize.s28),
+            padding: EdgeInsets.symmetric(horizontal: 28.w),
             child: SingleChildScrollView(
               child: Form(
                 key: controller.formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      AppStrings.login.tr,
-                      style: StylesManager().getBoldStyle(
-                          color: ColorManager.darkPrimary, fontSize: 35),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          AppStrings.login.tr,
+                          textScaleFactor: 1,
+                          style: StylesManager().getBoldStyle(
+                              color: ColorManager.darkPrimary, fontSize: 33.sp),
+                        ),
+                        Lottie.asset(AssetsManager.hiAnim, width: 100.w)
+                      ],
                     ),
-                    const SizedBox(
-                      height: 30,
+                    SizedBox(
+                      height: 25.h,
                     ),
                     TextFormField(
                       controller: controller.emailCNTL,
+                      validator: (value) {
+                        if (value!.trim().isEmpty || value.trim() == null) {
+                          return AppStrings.validateEmail.tr;
+                        }
+                      },
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.email,
@@ -51,12 +66,17 @@ class _LoginViewState extends State<LoginView> {
                           border: InputBorder.none,
                           hintText: AppStrings.email.tr),
                     ),
-                    const SizedBox(
-                      height: Appsize.s28,
+                    SizedBox(
+                      height: 20.h,
                     ),
                     TextFormField(
                       controller: controller.passCNTL,
                       obscureText: controller.isPasswordShow,
+                      validator: (value) {
+                        if (value!.trim().isEmpty || value.trim() == null) {
+                          return AppStrings.validatePass.tr;
+                        }
+                      },
                       decoration: InputDecoration(
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -74,8 +94,8 @@ class _LoginViewState extends State<LoginView> {
                           border: InputBorder.none,
                           hintText: AppStrings.password.tr),
                     ),
-                    const SizedBox(
-                      height: 40,
+                    SizedBox(
+                      height: 40.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -88,27 +108,38 @@ class _LoginViewState extends State<LoginView> {
                             elevation: 10,
                             controller: controller.buttonCNTL,
                             onPressed: () async {
-                              controller.buttonCNTL.start();
-                              await Future.delayed(const Duration(seconds: 3));
-                              controller.buttonCNTL.stop();
-                              await Future.delayed(const Duration(seconds: 2));
-                              controller.buttonCNTL.success();
-                              await Future.delayed(const Duration(seconds: 2));
-                              controller.buttonCNTL.reset();
+                              if (controller.formKey.currentState!.validate()) {
+                                controller.buttonCNTL.start();
+                                await Future.delayed(
+                                    const Duration(seconds: 3));
+                                controller.buttonCNTL.stop();
+                                await Future.delayed(
+                                    const Duration(seconds: 2));
+                                controller.buttonCNTL.success();
+                                await Future.delayed(
+                                    const Duration(seconds: 2));
+                                controller.buttonCNTL.reset();
+                              } else {
+                                controller.buttonCNTL.reset();
+                              }
                             },
-                            child: Text(AppStrings.login2.tr))
+                            child: Text(
+                              AppStrings.login2.tr,
+                              textScaleFactor: 1,
+                            ))
                       ],
                     ),
-                    const SizedBox(
-                      height: 35,
+                    SizedBox(
+                      height: 30.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           AppStrings.accountDontExist.tr,
+                          textScaleFactor: 1,
                           style: StylesManager().getMediumStyle(
-                              color: ColorManager.lightGrey, fontSize: 18),
+                              color: ColorManager.lightGrey, fontSize: 18.0.sp),
                         ),
                         TextButton(
                           onPressed: () {
@@ -116,10 +147,11 @@ class _LoginViewState extends State<LoginView> {
                                 transition: Transition.cupertino);
                           },
                           child: Text('  ${AppStrings.signUp.tr}',
+                              textScaleFactor: 1,
                               style: TextStyle(
                                   color: ColorManager.primary,
                                   fontFamily: FontFamilyManager.fontFamily,
-                                  fontSize: 18)),
+                                  fontSize: 18.sp)),
                         )
                       ],
                     ),

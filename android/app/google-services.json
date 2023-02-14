@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "388610477736",
+    "project_id": "dawakom-797b5",
+    "storage_bucket": "dawakom-797b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388610477736:android:3afc502f40ff231e8a3c9d",
+        "android_client_info": {
+          "package_name": "com.example.advance_course"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388610477736-2beel35lr95btt8pkbu84arqimaepda3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEINaKcpR2b8E785Fb42Utg85ZXKaWpfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388610477736-2beel35lr95btt8pkbu84arqimaepda3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

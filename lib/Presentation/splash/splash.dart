@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:advance_course/Presentation/resources/assets_manager.dart';
+import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/routes_manager.dart';
-import 'package:advance_course/Presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -32,14 +33,21 @@ class _SplashViewState extends State<SplashView> {
   }
 
   _navigate() {
-    Navigator.pushReplacementNamed(context, Routes.onBourdingRoute);
+    Navigator.pushReplacementNamed(
+        context,
+        GetStorage().read('onBourdingDone') == 'completed'
+            ? Routes.loginRoute
+            : Routes.onBourdingRoute);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorManager.white,
       body: Center(
-        child: Lottie.asset(AssetsManager.logoAsset, height: Appsize.s250),
+        child: Image.asset(
+          AssetsManager.logoAsset,
+        ),
       ),
     );
   }

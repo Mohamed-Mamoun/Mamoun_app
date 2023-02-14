@@ -3,6 +3,7 @@ import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -20,16 +21,21 @@ class _MyAppState extends State<MyApp> {
   final box = GetStorage();
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      builder: EasyLoading.init(),
-      translations: LocalString(),
-      locale: box.read('lang') == 'ar'
-          ? const Locale('ar', 'AR')
-          : const Locale('en', 'US'),
-      theme: ThemeManager().getAppTheme(),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: RoutesGenerator.getRoute,
-      initialRoute: Routes.splashRoute,
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) => GetMaterialApp(
+        builder: EasyLoading.init(),
+        translations: LocalString(),
+        locale: box.read('lang') == 'ar'
+            ? const Locale('ar', 'AR')
+            : const Locale('en', 'US'),
+        theme: ThemeManager().getAppTheme(),
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: RoutesGenerator.getRoute,
+        initialRoute: Routes.splashRoute,
+      ),
     );
   }
 }

@@ -1,7 +1,8 @@
 import 'package:advance_course/Presentation/resources/color_manager.dart';
+import 'package:advance_course/Presentation/resources/font_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
-import 'package:advance_course/Presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ThemeManager {
   // App Theme
@@ -21,14 +22,14 @@ class ThemeManager {
         cardTheme: CardTheme(
             color: ColorManager.white,
             shadowColor: ColorManager.grey,
-            elevation: Appsize.s4),
+            elevation: 4),
 
         // App bar Theme
         appBarTheme: AppBarTheme(
             color: ColorManager.primary,
             shadowColor: ColorManager.primaryOpacity70,
             centerTitle: true,
-            elevation: Appsize.s4,
+            elevation: 4,
             titleTextStyle: StylesManager()
                 .getReqularStyle(color: ColorManager.white, fontSize: 16)),
 
@@ -62,11 +63,13 @@ class ThemeManager {
 
         // Input Decoration Theme
         inputDecorationTheme: InputDecorationTheme(
-          contentPadding: const EdgeInsets.all(8),
+          contentPadding: const EdgeInsets.all(10),
           helperStyle: StylesManager()
               .getReqularStyle(color: ColorManager.grey1, fontSize: 14),
-          hintStyle: StylesManager()
-              .getMediumStyle(color: ColorManager.grey, fontSize: 16),
+          hintStyle: TextStyle(
+              fontSize: 12.0.sp,
+              fontFamily: FontFamilyManager.fontFamily,
+              color: ColorManager.darkGrey),
           labelStyle:
               StylesManager().getMediumStyle(color: ColorManager.darkGrey),
           errorStyle:
@@ -80,22 +83,14 @@ class ThemeManager {
               borderSide: BorderSide(color: ColorManager.primary, width: 2.5)),
 
           //  focused Error Border
-          focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: ColorManager.grey,
-                width: Appsize.s1_5,
-              ),
-              borderRadius:
-                  const BorderRadius.all(Radius.circular(Appsize.s8))),
+          focusedErrorBorder: UnderlineInputBorder(
+              borderSide:
+                  BorderSide(color: ColorManager.lightGrey, width: 2.5)),
 
           //  error Border
-          errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: ColorManager.error,
-                width: Appsize.s1_5,
-              ),
-              borderRadius:
-                  const BorderRadius.all(Radius.circular(Appsize.s8))),
+          errorBorder: UnderlineInputBorder(
+              borderSide:
+                  BorderSide(color: ColorManager.lightGrey, width: 2.5)),
         ));
   }
 }

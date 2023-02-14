@@ -35,6 +35,12 @@ class AppStrings {
   static const String phone = "Phone Number";
   static const String accountExist = "Already Have an account?";
   static const String accountDontExist = "Dont have an account?";
+
+  // validation
+  static const String validateName = 'Please Enter Your Full Name';
+  static const String validateNumber = 'Please Enter Your Phone Number';
+  static const String validateEmail = 'Please Enter Your Email';
+  static const String validatePass = 'Please Enter Your Password';
 }
 
 class LocalString extends Translations {
@@ -55,6 +61,10 @@ class LocalString extends Translations {
           AppStrings.accountDontExist: AppStrings.accountDontExist,
           AppStrings.name: AppStrings.name,
           AppStrings.phone: AppStrings.phone,
+          AppStrings.validateEmail: AppStrings.validateEmail,
+          AppStrings.validatePass: AppStrings.validatePass,
+          AppStrings.validateName: AppStrings.validateName,
+          AppStrings.validateNumber: AppStrings.validateNumber,
         },
         "ar": {
           AppStrings.login: "تسجيل دخول",
@@ -69,6 +79,10 @@ class LocalString extends Translations {
           AppStrings.accountDontExist: "ليس لديك حساب؟",
           AppStrings.name: "الاسم",
           AppStrings.phone: "رقم الهاتف",
+          AppStrings.validateEmail: "الرجاء ادخال البريد الالكتروني",
+          AppStrings.validatePass: "الرجاء ادخال كلمة السر",
+          AppStrings.validateName: "الرجاء ادخال السم بالكامل",
+          AppStrings.validateNumber: "الرجاء ادخال رقم الهاتف"
         },
       };
 }

@@ -7,9 +7,11 @@ import 'package:advance_course/Presentation/resources/values_manager.dart';
 import 'package:advance_course/domain/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:get_storage/get_storage.dart';
 
 class OnBourdingView extends StatefulWidget {
   const OnBourdingView({super.key});
@@ -45,7 +47,7 @@ class _OnBourdingViewState extends State<OnBourdingView> {
     return Scaffold(
         backgroundColor: ColorManager.white,
         appBar: AppBar(
-          elevation: Appsize.s0,
+          elevation: 0,
           backgroundColor: ColorManager.white,
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark,
@@ -73,17 +75,18 @@ class _OnBourdingViewState extends State<OnBourdingView> {
         ),
         bottomSheet: Container(
           margin: const EdgeInsets.symmetric(horizontal: Appsize.s16),
-          height: Appsize.s120,
+          height: 120.w,
           alignment: const Alignment(0, 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(
                 child: Text(AppStrings.skip.tr,
+                    textScaleFactor: 1,
                     textAlign: TextAlign.end,
                     style: StylesManager().getMediumStyle(
                       color: ColorManager.primary,
-                      fontSize: Appsize.s20,
+                      fontSize: 20.w,
                     )),
                 onPressed: () {
                   setState(() {
@@ -98,22 +101,25 @@ class _OnBourdingViewState extends State<OnBourdingView> {
               onLastPage
                   ? TextButton(
                       child: Text(AppStrings.done.tr,
+                          textScaleFactor: 1,
                           textAlign: TextAlign.end,
                           style: StylesManager().getMediumStyle(
                             color: ColorManager.primary,
-                            fontSize: Appsize.s20,
+                            fontSize: 20.w,
                           )),
                       onPressed: () {
+                        GetStorage().write('onBourdingDone', 'completed');
                         Get.to(() => const LoginView(),
                             transition: Transition.cupertino);
                       },
                     )
                   : TextButton(
                       child: Text(AppStrings.next.tr,
+                          textScaleFactor: 1,
                           textAlign: TextAlign.end,
                           style: StylesManager().getMediumStyle(
                             color: ColorManager.primary,
-                            fontSize: Appsize.s20,
+                            fontSize: 20.w,
                           )),
                       onPressed: () {
                         _pageController.nextPage(
@@ -137,29 +143,31 @@ class OnBourdingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: Appsize.s40,
+        SizedBox(
+          height: 40.h,
         ),
         SizedBox(
-          height: Appsize.s290,
-          width: Appsize.s290,
+          height: 290.h,
+          width: 290.w,
           child: Lottie.asset(sider!.img.toString()),
         ),
-        const SizedBox(
-          height: Appsize.s60,
+        SizedBox(
+          height: 20.h,
         ),
         Text(
           sider!.title.toString(),
+          textScaleFactor: 1,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.displayLarge,
         ),
-        const SizedBox(
-          height: Appsize.s20,
+        SizedBox(
+          height: 20.h,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Appsize.s20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Text(
             sider!.subTitle.toString(),
+            textScaleFactor: 1,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.titleMedium,
           ),
