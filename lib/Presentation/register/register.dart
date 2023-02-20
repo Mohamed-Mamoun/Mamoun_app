@@ -3,6 +3,7 @@ import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/font_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
+import 'package:advance_course/data/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -133,21 +134,15 @@ class _RegisterViewState extends State<RegisterView> {
                             controller: controller.buttonCNTL,
                             onPressed: () async {
                               if (controller.formKey.currentState!.validate()) {
-                                controller.buttonCNTL.start();
-                                await Future.delayed(
-                                    const Duration(seconds: 3));
-                                controller.buttonCNTL.stop();
-                                await Future.delayed(
-                                    const Duration(seconds: 2));
-                                controller.buttonCNTL.success();
-                                await Future.delayed(
-                                    const Duration(seconds: 2));
-                                controller.buttonCNTL.reset();
-                              } else {
-                                controller.buttonCNTL.reset();
-                              }
+                                controller.signUpMethod(UserModel(
+                                  email: controller.emailCNTL.text,
+                                  pass: controller.passCNTL.text,
+                                  name: controller.nameCNTL.text,
+                                  number: controller.phoneCNTL.text,
+                                ));
+                              } else {}
                             },
-                            child: Text(AppStrings.signUp.tr))
+                            child: Text(AppStrings.submit.tr))
                       ],
                     ),
                     SizedBox(

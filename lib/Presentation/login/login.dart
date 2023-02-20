@@ -37,7 +37,7 @@ class _LoginViewState extends State<LoginView> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           AppStrings.login.tr,
@@ -45,14 +45,19 @@ class _LoginViewState extends State<LoginView> {
                           style: StylesManager().getBoldStyle(
                               color: ColorManager.darkPrimary, fontSize: 33.sp),
                         ),
-                        Lottie.asset(AssetsManager.hiAnim, width: 100.w)
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 20.w),
+                          child:
+                              Lottie.asset(AssetsManager.hiAnim, width: 80.w),
+                        )
                       ],
                     ),
                     SizedBox(
-                      height: 25.h,
+                      height: 15.h,
                     ),
                     TextFormField(
                       controller: controller.emailCNTL,
+                      // ignore: body_might_complete_normally_nullable
                       validator: (value) {
                         if (value!.trim().isEmpty || value.trim() == null) {
                           return AppStrings.validateEmail.tr;
@@ -109,16 +114,9 @@ class _LoginViewState extends State<LoginView> {
                             controller: controller.buttonCNTL,
                             onPressed: () async {
                               if (controller.formKey.currentState!.validate()) {
-                                controller.buttonCNTL.start();
-                                await Future.delayed(
-                                    const Duration(seconds: 3));
-                                controller.buttonCNTL.stop();
-                                await Future.delayed(
-                                    const Duration(seconds: 2));
-                                controller.buttonCNTL.success();
-                                await Future.delayed(
-                                    const Duration(seconds: 2));
-                                controller.buttonCNTL.reset();
+                                controller.signInMethod(
+                                    controller.emailCNTL.text.trim(),
+                                    controller.passCNTL.text.trim());
                               } else {
                                 controller.buttonCNTL.reset();
                               }
@@ -160,13 +158,6 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.to(() => const SettingsView(),
-                transition: Transition.cupertino);
-          },
-          child: const Icon(Icons.language_outlined),
         ),
       ),
     );

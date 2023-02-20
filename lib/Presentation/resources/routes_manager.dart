@@ -1,13 +1,13 @@
 import 'package:advance_course/Presentation/forget_password/forget_password.dart';
 import 'package:advance_course/Presentation/login/login.dart';
-import 'package:advance_course/Presentation/main/main.dart';
+import 'package:advance_course/Presentation/Home/home_view.dart';
 import 'package:advance_course/Presentation/onBourding/onbourding.dart';
 import 'package:advance_course/Presentation/register/register.dart';
 import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:advance_course/Presentation/splash/splash.dart';
-import 'package:advance_course/Presentation/store_details/store_details.dart';
+import 'package:advance_course/Presentation/cart/cart.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -34,9 +34,9 @@ class RoutesGenerator {
       case Routes.forgetPasswordRoute:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
       case Routes.mainRoute:
-        return MaterialPageRoute(builder: (_) => const MainView());
+        return MaterialPageRoute(builder: (_) => const HomeView());
       case Routes.storeDetailsRoute:
-        return MaterialPageRoute(builder: (_) => const StoreDetailsView());
+        return MaterialPageRoute(builder: (_) => const CartView());
       default:
         return unDefinedRoute();
     }

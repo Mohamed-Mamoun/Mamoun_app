@@ -4,7 +4,7 @@ import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:advance_course/Presentation/resources/values_manager.dart';
-import 'package:advance_course/domain/models/models.dart';
+import 'package:advance_course/data/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

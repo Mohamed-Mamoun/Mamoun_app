@@ -29,12 +29,25 @@ class AppStrings {
   static const String login = "Sign In";
   static const String login2 = "Login";
   static const String signUp = "Sign up";
+  static const String submit = "Submit";
   static const String email = "Email";
   static const String password = "Password";
   static const String name = "Full Name";
   static const String phone = "Phone Number";
   static const String accountExist = "Already Have an account?";
   static const String accountDontExist = "Dont have an account?";
+
+  static const String settings = "Settings";
+  static const String back = "Back";
+  static const String lan = "Language";
+  static const String signOut = "Sign out";
+  static const String popular = "Popular";
+  static const String home = 'Home';
+  static const String cosmatics = 'Cosmatics';
+  static const String seeAll = 'See All';
+  static const String recentProduct = 'Recent Porducts';
+  static const String cart = 'My Cart';
+  static const String darkMode = 'Dark Mode';
 
   // validation
   static const String validateName = 'Please Enter Your Full Name';
@@ -65,6 +78,17 @@ class LocalString extends Translations {
           AppStrings.validatePass: AppStrings.validatePass,
           AppStrings.validateName: AppStrings.validateName,
           AppStrings.validateNumber: AppStrings.validateNumber,
+          AppStrings.submit: AppStrings.submit,
+          AppStrings.settings: AppStrings.settings,
+          AppStrings.back: AppStrings.back,
+          AppStrings.lan: AppStrings.lan,
+          AppStrings.popular: AppStrings.popular,
+          AppStrings.home: AppStrings.home,
+          AppStrings.cosmatics: AppStrings.cosmatics,
+          AppStrings.recentProduct: AppStrings.recentProduct,
+          AppStrings.seeAll: AppStrings.seeAll,
+          AppStrings.cart: AppStrings.cart,
+          AppStrings.darkMode: AppStrings.darkMode,
         },
         "ar": {
           AppStrings.login: "تسجيل دخول",
@@ -82,7 +106,19 @@ class LocalString extends Translations {
           AppStrings.validateEmail: "الرجاء ادخال البريد الالكتروني",
           AppStrings.validatePass: "الرجاء ادخال كلمة السر",
           AppStrings.validateName: "الرجاء ادخال السم بالكامل",
-          AppStrings.validateNumber: "الرجاء ادخال رقم الهاتف"
+          AppStrings.validateNumber: "الرجاء ادخال رقم الهاتف",
+          AppStrings.submit: "ادخال",
+          AppStrings.settings: "الأعدادات",
+          AppStrings.back: "رجوع",
+          AppStrings.lan: "اللغة",
+          AppStrings.signOut: "نسجيل خروج",
+          AppStrings.popular: "منتجات رائجة",
+          AppStrings.home: "الرئيسية",
+          AppStrings.cosmatics: "مستحضرات التجميل",
+          AppStrings.recentProduct: "احدث المنتجات",
+          AppStrings.seeAll: "الكل",
+          AppStrings.darkMode: "الوضع الليلي",
+          AppStrings.cart: "السلة",
         },
       };
 }

@@ -8,8 +8,9 @@ class ThemeManager {
   // App Theme
   ThemeData getAppTheme() {
     return ThemeData(
-
+        scaffoldBackgroundColor: ColorManager.white,
         // main app Colors
+        dividerColor: ColorManager.lightGrey,
         primaryColor: ColorManager.primary,
         primaryColorLight: ColorManager.primaryOpacity70,
         primaryColorDark: ColorManager.darkPrimary,
@@ -54,10 +55,10 @@ class ThemeManager {
 
         // Text Theme
         textTheme: TextTheme(
-            displayLarge: StylesManager()
-                .getSemiBoldStyle(color: ColorManager.darkGrey, fontSize: 16),
-            titleMedium:
-                StylesManager().getMediumStyle(color: ColorManager.lightGrey),
+            displayLarge: StylesManager().getSemiBoldStyle(
+                color: ColorManager.darkGrey, fontSize: 18.sp),
+            titleMedium: StylesManager()
+                .getMediumStyle(color: ColorManager.darkGrey, fontSize: 14.sp),
             bodySmall:
                 StylesManager().getReqularStyle(color: ColorManager.grey1)),
 
