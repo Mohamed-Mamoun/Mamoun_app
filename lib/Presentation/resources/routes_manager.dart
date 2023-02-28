@@ -48,15 +48,13 @@ class RoutesGenerator {
               appBar: AppBar(
                 title: Text(
                   AppStrings.undefinedRoute,
-                  style: StylesManager().getReqularStyle(
-                      color: ColorManager.darkGrey, fontSize: 17),
+                  style: StylesManager().getReqularStyle(fontSize: 17),
                 ),
               ),
               body: Center(
                   child: Text(
                 AppStrings.undefinedRoute,
-                style: StylesManager().getReqularStyle(
-                    color: ColorManager.darkGrey, fontSize: 22),
+                style: StylesManager().getReqularStyle(fontSize: 22),
               )),
             ));
   }

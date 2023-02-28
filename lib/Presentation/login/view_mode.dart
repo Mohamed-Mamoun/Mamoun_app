@@ -31,7 +31,7 @@ class LoginViewModel extends GetxController {
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) => buttonCNTL.reset());
 
-      Get.to(() => const HomeView(), transition: Transition.cupertino);
+      Get.offAll(() => const HomeView(), transition: Transition.cupertino);
 
       update();
     } on FirebaseAuthException catch (e) {

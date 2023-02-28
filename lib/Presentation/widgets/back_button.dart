@@ -23,8 +23,7 @@ class CustomizBackButton extends StatelessWidget {
             Text(
               AppStrings.back.tr,
               textScaleFactor: 1,
-              style: StylesManager()
-                  .getMediumStyle(color: ColorManager.white, fontSize: 17.sp),
+              style: StylesManager().getMediumStyle(fontSize: 17.sp),
             )
           ],
         ),

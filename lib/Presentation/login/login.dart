@@ -24,7 +24,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<LoginViewModel>(
-      init: LoginViewModel(),
+      init: Get.find<LoginViewModel>(),
       builder: (controller) => Scaffold(
         body: Center(
           child: Padding(
@@ -42,8 +42,7 @@ class _LoginViewState extends State<LoginView> {
                         Text(
                           AppStrings.login.tr,
                           textScaleFactor: 1,
-                          style: StylesManager().getBoldStyle(
-                              color: ColorManager.darkPrimary, fontSize: 33.sp),
+                          style: StylesManager().getBoldStyle(fontSize: 33.sp),
                         ),
                         Padding(
                           padding: EdgeInsets.only(bottom: 20.w),
@@ -64,9 +63,8 @@ class _LoginViewState extends State<LoginView> {
                         }
                       },
                       decoration: InputDecoration(
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.email,
-                            color: ColorManager.darkGrey,
                           ),
                           border: InputBorder.none,
                           hintText: AppStrings.email.tr),
@@ -86,15 +84,13 @@ class _LoginViewState extends State<LoginView> {
                           suffixIcon: IconButton(
                             icon: Icon(
                               controller.suffix,
-                              color: ColorManager.darkGrey,
                             ),
                             onPressed: () {
                               controller.changePasswordVisib();
                             },
                           ),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.lock,
-                            color: ColorManager.darkGrey,
                           ),
                           border: InputBorder.none,
                           hintText: AppStrings.password.tr),
@@ -136,8 +132,8 @@ class _LoginViewState extends State<LoginView> {
                         Text(
                           AppStrings.accountDontExist.tr,
                           textScaleFactor: 1,
-                          style: StylesManager().getMediumStyle(
-                              color: ColorManager.lightGrey, fontSize: 18.0.sp),
+                          style:
+                              StylesManager().getMediumStyle(fontSize: 18.0.sp),
                         ),
                         TextButton(
                           onPressed: () {

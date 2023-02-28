@@ -47,6 +47,11 @@ dependencies:
   firebase_core: ^2.5.0
   firebase_auth: ^4.2.6
   cloud_firestore: ^4.3.2
+  lite_rolling_switch: ^1.0.0
+  font_awesome_flutter: ^10.4.0
+  sqflite: ^2.2.5
+  path: ^1.8.2
+  
 
 
 dev_dependencies:
@@ -87,6 +92,7 @@ flutter:
     - assets/images/right_arrow_ic.svg
     - assets/images/solid_circle_ic.svg
     - assets/images/cart2.png
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

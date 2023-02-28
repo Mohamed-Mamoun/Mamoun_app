@@ -5,42 +5,38 @@ class StylesManager {
   // Light Style
   TextStyle getLightStyle({
     double fontSize = 12,
-    required Color color,
   }) {
     return _getTextStyle(
-        fontSize, FontFamilyManager.fontFamily, FontWeightManager.light, color);
+        fontSize, FontFamilyManager.fontFamily, FontWeightManager.light);
   }
 
   // Reqular Style
-  TextStyle getReqularStyle({double fontSize = 12, required Color color}) {
-    return _getTextStyle(fontSize, FontFamilyManager.fontFamily,
-        FontWeightManager.reqular, color);
+  TextStyle getReqularStyle({double fontSize = 12}) {
+    return _getTextStyle(
+        fontSize, FontFamilyManager.fontFamily, FontWeightManager.reqular);
   }
 
   // Medium Style
-  TextStyle getMediumStyle({double fontSize = 12, required Color color}) {
-    return _getTextStyle(fontSize, FontFamilyManager.fontFamily,
-        FontWeightManager.medium, color);
+  TextStyle getMediumStyle({double fontSize = 12}) {
+    return _getTextStyle(
+        fontSize, FontFamilyManager.fontFamily, FontWeightManager.medium);
   }
 
   // Semi bold Style
-  TextStyle getSemiBoldStyle({double fontSize = 12, required Color color}) {
-    return _getTextStyle(fontSize, FontFamilyManager.fontFamily,
-        FontWeightManager.semiBold, color);
+  TextStyle getSemiBoldStyle({double fontSize = 12, Color? color}) {
+    return _getTextStyle(
+        fontSize, FontFamilyManager.fontFamily, FontWeightManager.semiBold);
   }
 
   // bold Style
-  TextStyle getBoldStyle({double fontSize = 12, required Color color}) {
+  TextStyle getBoldStyle({double fontSize = 12}) {
     return _getTextStyle(
-        fontSize, FontFamilyManager.fontFamily, FontWeightManager.bold, color);
+        fontSize, FontFamilyManager.fontFamily, FontWeightManager.bold);
   }
 
   TextStyle _getTextStyle(
-      double fontSize, String fontFamily, FontWeight fontWeight, Color color) {
+      double fontSize, String fontFamily, FontWeight fontWeight) {
     return TextStyle(
-        fontSize: fontSize,
-        fontFamily: fontFamily,
-        color: color,
-        fontWeight: fontWeight);
+        fontSize: fontSize, fontFamily: fontFamily, fontWeight: fontWeight);
   }
 }

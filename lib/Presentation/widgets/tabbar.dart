@@ -1,4 +1,5 @@
 import 'package:advance_course/Presentation/Home/home_view.dart';
+import 'package:advance_course/Presentation/Home/view_model.dart';
 import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
@@ -18,12 +19,11 @@ class TabBarWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TabBar(
-                labelColor: ColorManager.white,
-                unselectedLabelColor: ColorManager.black,
-                unselectedLabelStyle: StylesManager()
-                    .getMediumStyle(color: ColorManager.black, fontSize: 16.sp),
-                labelStyle: StylesManager()
-                    .getMediumStyle(color: ColorManager.white, fontSize: 16.sp),
+                labelColor:
+                    Get.isDarkMode ? ColorManager.white : ColorManager.black,
+                unselectedLabelStyle:
+                    StylesManager().getMediumStyle(fontSize: 16.sp),
+                labelStyle: StylesManager().getMediumStyle(fontSize: 16.sp),
                 indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: ColorManager.primary.withOpacity(0.9)),
@@ -79,6 +79,7 @@ class MainWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CNTL = Get.find<HomeViewModel>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -88,8 +89,7 @@ class MainWidget extends StatelessWidget {
             Text(
               '  ${AppStrings.popular.tr}',
               textScaleFactor: 1,
-              style: StylesManager().getSemiBoldStyle(
-                  color: ColorManager.darkGrey, fontSize: 24.sp),
+              style: StylesManager().getSemiBoldStyle(fontSize: 24.sp),
             ),
             Text(
               '  ${AppStrings.seeAll.tr} ',
@@ -103,22 +103,66 @@ class MainWidget extends StatelessWidget {
         Text(
           '  ${AppStrings.recentProduct.tr}',
           textScaleFactor: 1,
-          style: StylesManager()
-              .getReqularStyle(color: ColorManager.darkGrey, fontSize: 24.sp),
+          style: StylesManager().getReqularStyle(fontSize: 24.sp),
         ),
         Container(
           alignment: Alignment.topCenter,
           height: 190.h,
           child: ListView.builder(
-            itemCount: 6,
+            itemCount: CNTL.productsModel.length,
             itemBuilder: (context, index) {
               return Container(
+                margin: EdgeInsets.only(right: 10.w, left: 10.w, bottom: 15.h),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .background
+                          .withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 7,
+                      offset: const Offset(1, 1),
+                    ),
+                  ],
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 height: 140.h,
                 width: 180.w,
-                margin: EdgeInsets.only(bottom: 15.h),
-                decoration: BoxDecoration(
-                    color: ColorManager.lightGrey,
-                    borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          CNTL.productsModel[index].productImage.toString(),
+                          height: 100.h,
+                          width: 100.w,
+                        ),
+                        SizedBox(width: 15.w),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              CNTL.productsModel[index].productName.toString(),
+                              textScaleFactor: 1,
+                              style: StylesManager()
+                                  .getSemiBoldStyle(fontSize: 15.sp),
+                            ),
+                            Text(
+                              'Price:  ${CNTL.productsModel[index].productPrice}  SDG',
+                              textScaleFactor: 1,
+                              style: StylesManager()
+                                  .getSemiBoldStyle(fontSize: 16.sp),
+                            ),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
               );
             },
           ),

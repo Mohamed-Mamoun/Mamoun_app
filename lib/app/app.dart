@@ -28,13 +28,15 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) => GetMaterialApp(
         builder: EasyLoading.init(),
         translations: LocalString(),
+        theme: ThemeManager.lightTheme,
         locale: box.read('lang') == 'ar'
             ? const Locale('ar', 'AR')
             : const Locale('en', 'US'),
-        theme: ThemeManager().getAppTheme(),
+        fallbackLocale: const Locale('en', 'US'),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RoutesGenerator.getRoute,
         initialRoute: Routes.splashRoute,
+        defaultTransition: Transition.cupertino,
       ),
     );
   }

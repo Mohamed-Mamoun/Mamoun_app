@@ -85,7 +85,6 @@ class _OnBourdingViewState extends State<OnBourdingView> {
                     textScaleFactor: 1,
                     textAlign: TextAlign.end,
                     style: StylesManager().getMediumStyle(
-                      color: ColorManager.primary,
                       fontSize: 20.w,
                     )),
                 onPressed: () {
@@ -104,7 +103,6 @@ class _OnBourdingViewState extends State<OnBourdingView> {
                           textScaleFactor: 1,
                           textAlign: TextAlign.end,
                           style: StylesManager().getMediumStyle(
-                            color: ColorManager.primary,
                             fontSize: 20.w,
                           )),
                       onPressed: () {
@@ -118,7 +116,6 @@ class _OnBourdingViewState extends State<OnBourdingView> {
                           textScaleFactor: 1,
                           textAlign: TextAlign.end,
                           style: StylesManager().getMediumStyle(
-                            color: ColorManager.primary,
                             fontSize: 20.w,
                           )),
                       onPressed: () {

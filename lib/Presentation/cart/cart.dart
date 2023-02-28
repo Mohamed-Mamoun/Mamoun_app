@@ -1,4 +1,3 @@
-import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +18,7 @@ class CartView extends StatelessWidget {
         centerTitle: true,
         title: Text(
           AppStrings.cart.tr,
-          style: StylesManager()
-              .getMediumStyle(color: ColorManager.white, fontSize: 18.sp),
+          style: StylesManager().getMediumStyle(fontSize: 18.sp),
         ),
         automaticallyImplyLeading: false,
       ),

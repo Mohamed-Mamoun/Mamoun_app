@@ -34,8 +34,7 @@ class _RegisterViewState extends State<RegisterView> {
                     Text(
                       AppStrings.signUp.tr,
                       textScaleFactor: 1,
-                      style: StylesManager().getBoldStyle(
-                          color: ColorManager.darkPrimary, fontSize: 35.sp),
+                      style: StylesManager().getBoldStyle(fontSize: 35.sp),
                     ),
                     SizedBox(
                       height: 30.h,
@@ -48,9 +47,8 @@ class _RegisterViewState extends State<RegisterView> {
                         }
                       },
                       decoration: InputDecoration(
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.person,
-                            color: ColorManager.darkGrey,
                           ),
                           border: InputBorder.none,
                           hintText: AppStrings.name.tr),
@@ -66,9 +64,8 @@ class _RegisterViewState extends State<RegisterView> {
                         }
                       },
                       decoration: InputDecoration(
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.phone,
-                            color: ColorManager.darkGrey,
                           ),
                           border: InputBorder.none,
                           hintText: AppStrings.phone.tr),
@@ -84,9 +81,8 @@ class _RegisterViewState extends State<RegisterView> {
                         }
                       },
                       decoration: InputDecoration(
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.email,
-                            color: ColorManager.darkGrey,
                           ),
                           border: InputBorder.none,
                           hintText: AppStrings.email.tr),
@@ -106,15 +102,13 @@ class _RegisterViewState extends State<RegisterView> {
                           suffixIcon: IconButton(
                             icon: Icon(
                               controller.suffix,
-                              color: ColorManager.darkGrey,
                             ),
                             onPressed: () {
                               controller.changePasswordVisib();
                             },
                           ),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.lock,
-                            color: ColorManager.darkGrey,
                           ),
                           border: InputBorder.none,
                           hintText: AppStrings.password.tr),
@@ -142,7 +136,10 @@ class _RegisterViewState extends State<RegisterView> {
                                 ));
                               } else {}
                             },
-                            child: Text(AppStrings.submit.tr))
+                            child: Text(
+                              AppStrings.submit.tr,
+                              textScaleFactor: 1,
+                            ))
                       ],
                     ),
                     SizedBox(
@@ -153,8 +150,9 @@ class _RegisterViewState extends State<RegisterView> {
                       children: [
                         Text(
                           AppStrings.accountExist.tr,
-                          style: StylesManager().getMediumStyle(
-                              color: ColorManager.lightGrey, fontSize: 18.sp),
+                          textScaleFactor: 1,
+                          style:
+                              StylesManager().getMediumStyle(fontSize: 18.sp),
                         ),
                         TextButton(
                           onPressed: () {
