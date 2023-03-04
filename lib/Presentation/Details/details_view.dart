@@ -1,5 +1,7 @@
+import 'package:advance_course/Presentation/cart/view_model.dart';
 import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/font_manager.dart';
+import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:advance_course/data/models/models.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +15,13 @@ class DetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cntl = Get.find<CartViewModel>();
     final buttonCNTL = RoundedLoadingButtonController();
     return Scaffold(
       appBar: AppBar(
         elevation: 5,
         title: Text(
-          'Details',
+          AppStrings.details.tr,
           textScaleFactor: 1,
           style: StylesManager().getMediumStyle(fontSize: 18.sp),
         ),
@@ -49,16 +52,28 @@ class DetailsView extends StatelessWidget {
                   textScaleFactor: 1,
                   style: TextStyle(
                       fontFamily: FontFamilyManager.fontFamily,
-                      fontSize: 15.sp,
-                      color: ColorManager.darkPrimary),
+                      fontSize: 17.sp,
+                      color: ColorManager.primary),
                 ),
               ],
             ),
           ),
+          SizedBox(
+            height: 5.h,
+          ),
+          Text(
+            "  " + AppStrings.description.tr + ':',
+            textScaleFactor: 1,
+            style: TextStyle(
+              fontFamily: FontFamilyManager.fontFamily,
+              fontSize: 18.sp,
+            ),
+          ),
         ],
       ),
-      bottomSheet: Padding(
+      bottomSheet: Container(
         padding: EdgeInsets.only(bottom: 13.h),
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -73,10 +88,17 @@ class DetailsView extends StatelessWidget {
                 onPressed: () async {
                   buttonCNTL.start();
                   await Future.delayed(const Duration(seconds: 2));
+                  cntl.addProduct(CartProductModel(
+                      name: model.productName,
+                      productId: model.productId,
+                      quantity: 1,
+                      category: model.category,
+                      price: model.productPrice,
+                      image: model.productImage));
                   buttonCNTL.reset();
                 },
-                child: const Text(
-                  "Add To Cart",
+                child: Text(
+                  AppStrings.addToCart.tr,
                   textScaleFactor: 1,
                 ))
           ],

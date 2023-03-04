@@ -37,9 +37,7 @@ class _SettingsViewState extends State<SettingsView> {
           children: [
             SizedBox(height: 10.h),
             ListTile(
-              onTap: () {
-                Get.back();
-              },
+              onTap: () {},
               leading: Icon(
                 Icons.language,
                 size: 31,

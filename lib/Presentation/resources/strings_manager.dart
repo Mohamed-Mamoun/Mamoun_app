@@ -48,6 +48,13 @@ class AppStrings {
   static const String recentProduct = 'Recent Porducts';
   static const String cart = 'My Cart';
   static const String darkMode = 'Dark Mode';
+  static const String details = 'Details';
+  static const String addToCart = 'Add To Cart';
+  static const String description = 'Description';
+  static const String subTotal = 'Sub Total';
+  static const String delivery = 'Delivery';
+  static const String total = 'Total';
+  static const String addProductsToCart = 'Add Products To Cart';
 
   // validation
   static const String validateName = 'Please Enter Your Full Name';
@@ -89,6 +96,13 @@ class LocalString extends Translations {
           AppStrings.seeAll: AppStrings.seeAll,
           AppStrings.cart: AppStrings.cart,
           AppStrings.darkMode: AppStrings.darkMode,
+          AppStrings.details: AppStrings.details,
+          AppStrings.addToCart: AppStrings.addToCart,
+          AppStrings.description: AppStrings.description,
+          AppStrings.subTotal: AppStrings.subTotal,
+          AppStrings.delivery: AppStrings.delivery,
+          AppStrings.total: AppStrings.total,
+          AppStrings.addProductsToCart: AppStrings.addProductsToCart,
         },
         "ar": {
           AppStrings.login: "تسجيل دخول",
@@ -119,6 +133,13 @@ class LocalString extends Translations {
           AppStrings.seeAll: "الكل",
           AppStrings.darkMode: "الوضع الليلي",
           AppStrings.cart: "السلة",
+          AppStrings.details: "التفاصيل",
+          AppStrings.addToCart: "اضافة الي السلة",
+          AppStrings.description: "وصف المنتج",
+          AppStrings.subTotal: "السعر الجزئي",
+          AppStrings.delivery: "سعر التوصيل",
+          AppStrings.total: "السعر الكلي",
+          AppStrings.addProductsToCart: "اضف منتجات الي السلة",
         },
       };
 }

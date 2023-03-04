@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) => GetMaterialApp(
         builder: EasyLoading.init(),
         translations: LocalString(),
-        theme: ThemeManager.lightTheme,
+        theme: ThemeManager.darkTheme,
         locale: box.read('lang') == 'ar'
             ? const Locale('ar', 'AR')
             : const Locale('en', 'US'),

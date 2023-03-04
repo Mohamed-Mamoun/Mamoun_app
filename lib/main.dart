@@ -1,4 +1,5 @@
 import 'package:advance_course/Presentation/Home/view_model.dart';
+import 'package:advance_course/Presentation/cart/view_model.dart';
 import 'package:advance_course/Presentation/login/view_mode.dart';
 import 'package:advance_course/app/app.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,5 +17,6 @@ void main() async {
   await GetStorage.init();
   Get.put(HomeViewModel());
   Get.put(LoginViewModel());
+  Get.put(CartViewModel());
   runApp(MyApp());
 }

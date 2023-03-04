@@ -1,5 +1,7 @@
 import 'package:advance_course/Presentation/Details/details_view.dart';
 import 'package:advance_course/Presentation/Home/view_model.dart';
+import 'package:advance_course/Presentation/Search/search_view.dart';
+import 'package:advance_course/Presentation/cart/cart.dart';
 import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
@@ -43,7 +45,10 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const SearchView(),
+                          transition: Transition.downToUp);
+                    },
                     icon: Icon(
                       Icons.search_outlined,
                       size: 31,
@@ -53,7 +58,11 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(
+                        () => const CartView(),
+                      );
+                    },
                     icon: Icon(
                       FontAwesomeIcons.cartShopping,
                       size: 25,
@@ -119,7 +128,6 @@ class BestProduct extends StatelessWidget {
                       width: 180.w,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: ColorManager.white,
                       ),
                       child: Image.asset(
                         controller.productsModel[index].productImage.toString(),

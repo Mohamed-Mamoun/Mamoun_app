@@ -81,6 +81,7 @@ flutter:
     - assets/images/splash_logo2.png
     - assets/images/search.png
     - assets/anim/developer.json
+    - assets/anim/cart.json
     - assets/anim/Mobile Development anim.json
     - assets/anim/hi.json
     - assets/anim/check-out.json

@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ThemeManager {
 ///////////////////////////////////////////////
   static ThemeData darkTheme = ThemeData.dark().copyWith(
+      primaryColorDark: ColorManager.white,
       primaryColor: ColorManager.primary,
       scaffoldBackgroundColor: const Color(0xFF222831),
       dividerColor: ColorManager.white,
@@ -71,6 +72,7 @@ class ThemeManager {
 
   ///////////////////////////////////////////////
   static ThemeData lightTheme = ThemeData.light().copyWith(
+      primaryColorDark: ColorManager.darkGrey,
       primaryColor: ColorManager.primary,
       iconTheme: IconThemeData(color: ColorManager.primary),
       scaffoldBackgroundColor: ColorManager.white,
