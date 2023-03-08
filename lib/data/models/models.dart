@@ -80,13 +80,6 @@ class ProductModel {
 }
 
 class CartProductModel {
-  String? productId;
-  String? name;
-  String? price;
-  String? category;
-  String? image;
-  int? quantity;
-
   CartProductModel(
       {this.productId,
       this.name,
@@ -106,6 +99,13 @@ class CartProductModel {
     category = map['category'];
   }
 
+  String? category;
+  String? image;
+  String? name;
+  String? price;
+  String? productId;
+  int? quantity;
+
   // Function To convert data To json
   toJson() {
     return {
@@ -115,6 +115,48 @@ class CartProductModel {
       'quantity': quantity,
       'productId': productId,
       'category': category
+    };
+  }
+}
+
+/////////////////////////////////////////
+class OrderModel {
+  // Constructor
+  OrderModel(
+      {this.name,
+      this.number,
+      this.medicineName,
+      this.products,
+      this.orderImage,
+      this.orderTime});
+
+  // Function To get data from json
+  OrderModel.fromJson(Map<dynamic, dynamic> map) {
+    if (map == null) return;
+    name = map['name'];
+    orderImage = map['orderImage'];
+    number = map['number'];
+    medicineName = map['medicineName'];
+    products = map['products'];
+    orderTime = map['orderTime'];
+  }
+
+  String? medicineName;
+  String? name;
+  String? number;
+  String? orderImage;
+  String? orderTime;
+  List? products;
+
+  // Function To convert data To json
+  toJson() {
+    return {
+      'name': name,
+      'orderImage': orderImage,
+      'number': number,
+      'medicineName': medicineName,
+      'products': products,
+      'orderTime': orderTime,
     };
   }
 }

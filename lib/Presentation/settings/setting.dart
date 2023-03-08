@@ -103,8 +103,8 @@ class _SettingsViewState extends State<SettingsView> {
                 style: StylesManager().getMediumStyle(fontSize: 15.sp),
               ),
               trailing: IconButton(
-                icon: const Icon(
-                  Icons.dark_mode,
+                icon: Icon(
+                  Get.isDarkMode ? Icons.sunny : Icons.dark_mode,
                 ),
                 onPressed: () {},
               ),

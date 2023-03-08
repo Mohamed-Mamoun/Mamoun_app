@@ -2,6 +2,7 @@ import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/font_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ThemeManager {
@@ -19,8 +20,10 @@ class ThemeManager {
 
       // App bar Theme
       appBarTheme: AppBarTheme(
-          color: ColorManager.primary,
-          shadowColor: ColorManager.primaryOpacity70,
+          backgroundColor: const Color(0xFF222831),
+          systemOverlayStyle:
+              SystemUiOverlayStyle(statusBarColor: ColorManager.primary),
+          shadowColor: ColorManager.primary,
           centerTitle: true,
           elevation: 4,
           titleTextStyle: StylesManager().getReqularStyle(fontSize: 16)),
@@ -78,11 +81,21 @@ class ThemeManager {
       scaffoldBackgroundColor: ColorManager.white,
       // // main app Colors
       dividerColor: ColorManager.darkGrey,
-
+      textTheme: TextTheme(
+        titleLarge: TextStyle(
+            color: ColorManager.darkGrey,
+            fontFamily: FontFamilyManager.fontFamily),
+        titleMedium: TextStyle(
+            color: ColorManager.darkGrey,
+            fontFamily: FontFamilyManager.fontFamily,
+            fontSize: 14.sp),
+      ),
       // App bar Theme
       appBarTheme: AppBarTheme(
-          color: ColorManager.primary,
-          shadowColor: ColorManager.primaryOpacity70,
+          systemOverlayStyle:
+              SystemUiOverlayStyle(statusBarColor: ColorManager.primary),
+          color: ColorManager.white,
+          shadowColor: ColorManager.primary,
           centerTitle: true,
           elevation: 4,
           titleTextStyle: StylesManager().getReqularStyle(fontSize: 16)),
@@ -106,16 +119,10 @@ class ThemeManager {
 
       // // Input Decoration Theme
       inputDecorationTheme: InputDecorationTheme(
-        prefixIconColor: ColorManager.darkGrey,
         contentPadding: const EdgeInsets.all(10),
-        helperStyle: TextStyle(
-            fontSize: 12.0.sp,
-            fontFamily: FontFamilyManager.fontFamily,
-            color: ColorManager.darkGrey),
-        counterStyle: TextStyle(
-            fontSize: 12.0.sp,
-            fontFamily: FontFamilyManager.fontFamily,
-            color: ColorManager.darkGrey),
+        prefixIconColor: ColorManager.darkGrey,
+
+        helperStyle: StylesManager().getReqularStyle(fontSize: 14),
         hintStyle: TextStyle(
             fontSize: 12.0.sp,
             fontFamily: FontFamilyManager.fontFamily,
@@ -123,18 +130,18 @@ class ThemeManager {
         labelStyle: StylesManager().getMediumStyle(),
         errorStyle: StylesManager().getReqularStyle(),
         enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorManager.lightGrey, width: 2.5)),
+            borderSide: BorderSide(color: ColorManager.darkGrey, width: 2.5)),
 
-        //   //  focused Border
+        //  focused Border
         focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: ColorManager.primary, width: 2.5)),
 
-        //   //  focused Error Border
+        //  focused Error Border
         focusedErrorBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: ColorManager.lightGrey, width: 2.5)),
 
-        //   //  error Border
-        errorBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorManager.lightGrey, width: 2.5)),
+        //  error Border
+        errorBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.red, width: 2.5)),
       ));
 }

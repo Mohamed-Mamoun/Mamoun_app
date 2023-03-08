@@ -1,5 +1,8 @@
 import 'package:advance_course/Presentation/cart/view_model.dart';
+import 'package:advance_course/Presentation/order/image_order.dart';
+import 'package:advance_course/Presentation/order/order_view.dart';
 import 'package:advance_course/Presentation/resources/assets_manager.dart';
+import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +21,8 @@ class CartView extends StatelessWidget {
       init: Get.find<CartViewModel>(),
       builder: (controller) => Scaffold(
           appBar: AppBar(
+            shadowColor: ColorManager.primary,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             leading: const CustomizBackButton(),
             leadingWidth: 100.w,
             centerTitle: true,
@@ -26,6 +31,34 @@ class CartView extends StatelessWidget {
               style: StylesManager().getMediumStyle(fontSize: 18.sp),
             ),
             automaticallyImplyLeading: false,
+            actions: [
+              PopupMenuButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  padding: const EdgeInsets.all(0),
+                  itemBuilder: (context) {
+                    return [
+                      PopupMenuItem(
+                        child: Center(
+                            child: ElevatedButton.icon(
+                          onPressed: () {
+                            Get.back();
+                            Get.to(() => const ImageOrder());
+                          },
+                          icon: const Icon(Icons.camera_alt),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              padding: const EdgeInsets.all(0)),
+                          label: Text(
+                            "  Take a Photo",
+                            style:
+                                StylesManager().getMediumStyle(fontSize: 13.sp),
+                          ),
+                        )),
+                      )
+                    ];
+                  })
+            ],
           ),
           body: controller.cartProductModel.isEmpty
               ? Column(
@@ -159,29 +192,32 @@ class CartView extends StatelessWidget {
                                                     title:
                                                         'Delete Product From Cart?'
                                                             .tr,
-                                                    titleStyle: TextStyle(
-                                                      fontFamily: 'primary',
-                                                      fontSize: 12.0.sp,
-                                                    ),
+                                                    titleStyle: StylesManager()
+                                                        .getMediumStyle(
+                                                            fontSize: 14.sp),
                                                     content: Padding(
                                                       padding:
                                                           EdgeInsets.symmetric(
                                                               horizontal: 3.0.w,
                                                               vertical: 2.0.h),
-                                                      child: Row(
+                                                      child: Column(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
                                                                 .spaceEvenly,
                                                         children: [
                                                           ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Theme.of(
-                                                                            context)
-                                                                        .primaryColor,
-                                                              ),
+                                                              style: ElevatedButton.styleFrom(
+                                                                  shape: RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              15)),
+                                                                  padding: EdgeInsets
+                                                                      .symmetric(
+                                                                          horizontal: 70
+                                                                              .w),
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .red),
                                                               onPressed: () {
                                                                 controller.deleteProduct(
                                                                     controller
@@ -194,18 +230,36 @@ class CartView extends StatelessWidget {
                                                                 // color: Colors
                                                                 //     .white,
                                                                 style: StylesManager()
-                                                                    .getMediumStyle(),
+                                                                    .getMediumStyle(
+                                                                        fontSize:
+                                                                            14.sp),
                                                               )),
                                                           ElevatedButton(
-                                                            style: ElevatedButton
-                                                                .styleFrom(),
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  ColorManager
+                                                                      .darkGrey,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              15)),
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          70.w),
+                                                            ),
                                                             onPressed: () {
                                                               Get.back();
                                                             },
                                                             child: Text(
                                                               'Cancel'.tr,
                                                               style: StylesManager()
-                                                                  .getMediumStyle(),
+                                                                  .getMediumStyle(
+                                                                      fontSize:
+                                                                          14.sp),
                                                             ),
                                                           )
                                                         ],
@@ -296,7 +350,9 @@ class CartView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(15)),
                               padding: EdgeInsets.symmetric(
                                   horizontal: 20.w, vertical: 8.h)),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => const OrderView());
+                          },
                           icon: Text(
                             'Order Now ',
                             style:

@@ -62,7 +62,7 @@ class DetailsView extends StatelessWidget {
             height: 5.h,
           ),
           Text(
-            "  " + AppStrings.description.tr + ':',
+            '    ${AppStrings.description.tr} :',
             textScaleFactor: 1,
             style: TextStyle(
               fontFamily: FontFamilyManager.fontFamily,
