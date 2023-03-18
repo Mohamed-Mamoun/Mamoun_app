@@ -1,6 +1,7 @@
 import 'package:advance_course/Presentation/order/view_model.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
+import 'package:advance_course/Presentation/widgets/back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -19,9 +20,11 @@ class ImageOrder extends StatelessWidget {
       init: Get.find<OrderViewMode>(),
       builder: (controller) => Scaffold(
           appBar: AppBar(
+            leading: const CustomizBackButton(),
+            leadingWidth: 100.w,
             title: Text(
               "Add Order",
-              style: StylesManager().getMediumStyle(fontSize: 16.sp),
+              style: Get.textTheme.titleLarge,
             ),
           ),
           body: Padding(
@@ -97,10 +100,11 @@ class ImageOrder extends StatelessWidget {
                             IconButton(
                               icon: CircleAvatar(
                                 backgroundColor:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                                child: const Icon(
-                                  Icons.camera_alt,
+                                    Get.theme.scaffoldBackgroundColor,
+                                child: Icon(
+                                  Icons.camera_alt_outlined,
                                   size: 31,
+                                  color: Get.theme.primaryColorDark,
                                 ),
                               ),
                               onPressed: () async {
@@ -111,29 +115,25 @@ class ImageOrder extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         ListTile(
-                                          leading: const Icon(
-                                            Icons.camera_alt,
-                                          ),
-                                          title: Text(
-                                            'Camera',
-                                            style: StylesManager()
-                                                .getMediumStyle(
-                                                    fontSize: 14.sp),
-                                          ),
+                                          leading: Icon(Icons.camera_alt,
+                                              color:
+                                                  Get.theme.primaryColorDark),
+                                          title: Text('Camera',
+                                              style: Get
+                                                  .theme.textTheme.titleMedium),
                                           onTap: () {
                                             controller
                                                 .pickImages(ImageSource.camera);
                                           },
                                         ),
                                         ListTile(
-                                          leading: const Icon(
-                                            Icons.image,
-                                          ),
+                                          leading: Icon(Icons.image,
+                                              color:
+                                                  Get.theme.primaryColorDark),
                                           title: Text(
                                             'Gallery',
-                                            style: StylesManager()
-                                                .getMediumStyle(
-                                                    fontSize: 14.sp),
+                                            style:
+                                                Get.theme.textTheme.titleMedium,
                                           ),
                                           onTap: () {
                                             controller.pickImages(
@@ -150,9 +150,7 @@ class ImageOrder extends StatelessWidget {
                         ),
                         Divider(
                           thickness: 2,
-                          color: Theme.of(context)
-                              .primaryColorDark
-                              .withOpacity(0.7),
+                          color: Get.theme.primaryColorDark.withOpacity(0.7),
                         ),
                         Text(
                           controller.imagePath == null

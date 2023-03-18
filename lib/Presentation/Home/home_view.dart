@@ -4,7 +4,6 @@ import 'package:advance_course/Presentation/Search/search_view.dart';
 import 'package:advance_course/Presentation/cart/cart.dart';
 import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
-import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:advance_course/Presentation/settings/setting.dart';
 import 'package:advance_course/Presentation/widgets/tabbar.dart';
 import 'package:flutter/material.dart';
@@ -39,9 +38,7 @@ class HomeView extends StatelessWidget {
                     icon: Icon(
                       Icons.settings,
                       size: 31,
-                      color: Get.isDarkMode
-                          ? ColorManager.primary
-                          : ColorManager.black.withOpacity(0.9),
+                      color: Get.theme.primaryColorLight,
                     ),
                   ),
                   IconButton(
@@ -52,9 +49,7 @@ class HomeView extends StatelessWidget {
                     icon: Icon(
                       Icons.search_outlined,
                       size: 31,
-                      color: Get.isDarkMode
-                          ? ColorManager.primary
-                          : ColorManager.black.withOpacity(0.9),
+                      color: Get.theme.primaryColorLight,
                     ),
                   ),
                   IconButton(
@@ -66,9 +61,7 @@ class HomeView extends StatelessWidget {
                     icon: Icon(
                       FontAwesomeIcons.cartShopping,
                       size: 25,
-                      color: Get.isDarkMode
-                          ? ColorManager.primary
-                          : ColorManager.black.withOpacity(0.9),
+                      color: Get.theme.primaryColorLight,
                     ),
                   ),
                 ],
@@ -137,13 +130,12 @@ class BestProduct extends StatelessWidget {
                     Text(
                       controller.productsModel[index].productName.toString(),
                       textScaleFactor: 1,
-                      style: StylesManager().getSemiBoldStyle(
-                          fontSize: 13.sp, color: ColorManager.black),
+                      style: Get.theme.textTheme.titleMedium,
                     ),
                     Text(
                       'Price:  ${controller.productsModel[index].productPrice}  SDG',
                       textScaleFactor: 1,
-                      style: StylesManager().getSemiBoldStyle(fontSize: 16.sp),
+                      style: Get.theme.textTheme.titleSmall,
                     ),
                   ],
                 ),

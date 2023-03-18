@@ -32,6 +32,8 @@ class LoginViewModel extends GetxController {
           .then((value) => buttonCNTL.reset());
 
       Get.offAll(() => const HomeView(), transition: Transition.cupertino);
+      emailCNTL.clear();
+      passCNTL.clear();
 
       update();
     } on FirebaseAuthException catch (e) {

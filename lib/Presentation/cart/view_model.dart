@@ -96,14 +96,14 @@ class CartViewModel extends GetxController {
     EasyLoading.showSuccess('Product added To Cart'.tr,
         duration: const Duration(seconds: 3));
     totalPrice += (double.parse(cartProductModel.price.toString()) *
-        cartProductModel.quantity!.toInt());
+        cartProductModel.quantity!);
     update();
   }
 
 //  Function To delete  Products from Local Database
   void deleteProduct(CartProductModel cartProductModel) async {
-    totalPrice -= (double.parse(cartProductModel.price.toString()) *
-        cartProductModel.quantity!.toInt());
+    totalPrice -=
+        (double.parse(cartProductModel.price!) * cartProductModel.quantity!);
     var dbHelper = CartDatabaseHelper.db;
     await dbHelper.delete(cartProductModel);
     _cartProductModel.remove(cartProductModel);
@@ -114,7 +114,7 @@ class CartViewModel extends GetxController {
   void increaseQuantity(int index) {
     if (_cartProductModel[index].quantity! >= 10) return;
     _cartProductModel[index].quantity! + 1;
-    totalPrice += (double.parse(_cartProductModel[index].price.toString()));
+    totalPrice += (double.parse(_cartProductModel[index].price!));
     update();
   }
 
@@ -122,52 +122,17 @@ class CartViewModel extends GetxController {
   void decreaseQuantity(int index) {
     if (_cartProductModel[index].quantity! <= 1) return;
     _cartProductModel[index].quantity! - 1;
-    totalPrice -= (double.parse(_cartProductModel[index].price.toString()));
+    totalPrice -= (double.parse(_cartProductModel[index].price!));
     update();
   }
 
-// Function To Calculate Total Price
+  // Function To Calculate Total Price
   getTotalPrice() {
     for (int i = 0; i < _cartProductModel.length; i++) {
-      if (_cartProductModel.isEmpty) return totalPrice = 0;
-      totalPrice += (double.parse(_cartProductModel[i].price.toString()) *
-          _cartProductModel[i].quantity!.toInt());
+      if (_cartProductModel.isEmpty) return totalPrice = 0.0;
+      totalPrice += (double.parse(_cartProductModel[i].price!) *
+          _cartProductModel[i].quantity!);
     }
     update();
   }
-
-  // check Total price
-  checkTotal() {
-    if (_cartProductModel.isEmpty) {
-      totalPrice = 0.0;
-    }
-  }
-
-//  Function To add  Orders To Live Database
-  // addOrderToDatabase() async {
-  //   try {
-  //     await FirebaseFirestore.instance.collection('orders').add(
-  //           OrderModel(
-  //                   id: FirebaseAuth.instance.currentUser.uid,
-  //                   phoneNumber: phoneCNTL.text,
-  //                   address: addressCNTL.text,
-  //                   products: _cartProductModel.map((e) => e.toJson()).toList(),
-  //                   time: DateTime.now().toString(),
-  //                   totalPrice: totalPrice)
-  //               .toJson(),
-  //         );
-
-  //     Get.back();
-  //     await Future.delayed(const Duration(seconds: 1));
-  //     EasyLoading.showSuccess('Product Added Successfuly');
-  //     phoneCNTL.clear();
-  //     addressCNTL.clear();
-  //     _cartProductModel.clear();
-  //   } catch (e) {
-  //     Get.back();
-  //     EasyLoading.showError('Unknown Error'.tr,
-  //         dismissOnTap: true, duration: const Duration(seconds: 5));
-  //     update();
-  //   }
-  // }
 }

@@ -8,27 +8,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-class MyApp extends StatefulWidget {
-  const MyApp._internal();
-  static const MyApp instance = MyApp._internal();
-  factory MyApp() => instance;
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final box = GetStorage();
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    final ThemesController themeController = Get.put(ThemesController());
+    final box = GetStorage();
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => GetMaterialApp(
+        theme: ThemeManager.lightTheme,
+        darkTheme: ThemeManager.darkTheme,
         builder: EasyLoading.init(),
         translations: LocalString(),
-        theme: ThemeManager.darkTheme,
+        themeMode: getThemeMode(themeController.theme),
         locale: box.read('lang') == 'ar'
             ? const Locale('ar', 'AR')
             : const Locale('en', 'US'),
@@ -39,5 +34,22 @@ class _MyAppState extends State<MyApp> {
         defaultTransition: Transition.cupertino,
       ),
     );
+  }
+
+  ThemeMode getThemeMode(String type) {
+    ThemeMode themeMode = ThemeMode.system;
+    switch (type) {
+      case "system":
+        themeMode = ThemeMode.system;
+        break;
+      case "dark":
+        themeMode = ThemeMode.dark;
+        break;
+      default:
+        themeMode = ThemeMode.light;
+        break;
+    }
+
+    return themeMode;
   }
 }

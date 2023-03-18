@@ -1,6 +1,5 @@
 import 'package:advance_course/Presentation/resources/color_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
-import 'package:advance_course/Presentation/resources/styles_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,12 +17,13 @@ class CustomizBackButton extends StatelessWidget {
           children: [
             Icon(
               Icons.arrow_back_ios,
-              color: ColorManager.white,
+              color:
+                  Get.isDarkMode ? ColorManager.white : ColorManager.darkGrey,
             ),
             Text(
               AppStrings.back.tr,
               textScaleFactor: 1,
-              style: StylesManager().getMediumStyle(fontSize: 17.sp),
+              style: Get.theme.textTheme.titleMedium,
             )
           ],
         ),

@@ -20,5 +20,5 @@ void main() async {
   Get.put(LoginViewModel());
   Get.put(CartViewModel());
   Get.put(OrderViewMode());
-  runApp(MyApp());
+  runApp(const MyApp());
 }

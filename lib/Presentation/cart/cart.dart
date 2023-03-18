@@ -28,36 +28,17 @@ class CartView extends StatelessWidget {
             centerTitle: true,
             title: Text(
               AppStrings.cart.tr,
-              style: StylesManager().getMediumStyle(fontSize: 18.sp),
+              style: Get.textTheme.titleLarge,
+              textScaleFactor: 1,
             ),
             automaticallyImplyLeading: false,
             actions: [
-              PopupMenuButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  padding: const EdgeInsets.all(0),
-                  itemBuilder: (context) {
-                    return [
-                      PopupMenuItem(
-                        child: Center(
-                            child: ElevatedButton.icon(
-                          onPressed: () {
-                            Get.back();
-                            Get.to(() => const ImageOrder());
-                          },
-                          icon: const Icon(Icons.camera_alt),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              padding: const EdgeInsets.all(0)),
-                          label: Text(
-                            "  Take a Photo",
-                            style:
-                                StylesManager().getMediumStyle(fontSize: 13.sp),
-                          ),
-                        )),
-                      )
-                    ];
-                  })
+              IconButton(
+                onPressed: () {
+                  Get.to(() => const ImageOrder());
+                },
+                icon: Icon(Icons.camera_alt, color: Get.theme.primaryColorDark),
+              )
             ],
           ),
           body: controller.cartProductModel.isEmpty
@@ -75,7 +56,8 @@ class CartView extends StatelessWidget {
                     ),
                     Text(
                       AppStrings.addProductsToCart.tr,
-                      style: StylesManager().getMediumStyle(fontSize: 20.sp),
+                      style: Get.theme.textTheme.titleLarge,
+                      textScaleFactor: 1,
                     ),
                   ],
                 )
@@ -123,6 +105,7 @@ class CartView extends StatelessWidget {
                                       controller
                                           .cartProductModel[index].category
                                           .toString(),
+                                      textScaleFactor: 1,
                                       style: StylesManager()
                                           .getMediumStyle(fontSize: 12.sp),
                                     ),
@@ -132,12 +115,14 @@ class CartView extends StatelessWidget {
                                       child: Text(
                                         controller.cartProductModel[index].name
                                             .toString(),
+                                        textScaleFactor: 1,
                                         style: StylesManager()
                                             .getMediumStyle(fontSize: 12.sp),
                                       ),
                                     ),
                                     Text(
                                       '  SDG  ${double.parse(controller.cartProductModel[index].price.toString())}',
+                                      textScaleFactor: 1,
                                       style: StylesManager()
                                           .getMediumStyle(fontSize: 12.sp),
                                     ),
@@ -164,6 +149,7 @@ class CartView extends StatelessWidget {
                                             controller.cartProductModel[index]
                                                 .quantity
                                                 .toString(),
+                                            textScaleFactor: 1,
                                           ),
                                           IconButton(
                                               onPressed: () {
@@ -293,6 +279,7 @@ class CartView extends StatelessWidget {
                         ),
                         trailing: Text(
                           '  SDG   ${controller.totalPrice}',
+                          textScaleFactor: 1,
                           style:
                               StylesManager().getMediumStyle(fontSize: 15.sp),
                         ),
@@ -304,11 +291,13 @@ class CartView extends StatelessWidget {
                       ListTile(
                         title: Text(
                           AppStrings.delivery.tr,
+                          textScaleFactor: 1,
                           style:
                               StylesManager().getMediumStyle(fontSize: 15.sp),
                         ),
                         trailing: Text(
                           '  SDG  ${double.parse(3000.toString())}',
+                          textScaleFactor: 1,
                           style:
                               StylesManager().getMediumStyle(fontSize: 15.sp),
                         ),
@@ -319,11 +308,13 @@ class CartView extends StatelessWidget {
                       ListTile(
                         title: Text(
                           AppStrings.total.tr,
+                          textScaleFactor: 1,
                           style:
                               StylesManager().getMediumStyle(fontSize: 15.sp),
                         ),
                         trailing: Text(
                           '  SDG  ${double.parse((3000 + controller.totalPrice).toString())}',
+                          textScaleFactor: 1,
                           style:
                               StylesManager().getMediumStyle(fontSize: 15.sp),
                         ),
@@ -355,6 +346,7 @@ class CartView extends StatelessWidget {
                           },
                           icon: Text(
                             'Order Now ',
+                            textScaleFactor: 1,
                             style:
                                 StylesManager().getMediumStyle(fontSize: 15.sp),
                           )),

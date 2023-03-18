@@ -6,6 +6,7 @@ class AssetsManager {
   static const String searchIcon = '$imagesPath/search.png';
 
   static const String onBourdingLogo1 = '$animPath/developer.json';
+  static const String orderSuccess = '$animPath/order_confirmed.json';
   static const String cart = '$animPath/cart.json';
   static const String onBourdingLogo2 =
       '$animPath/Mobile Development anim.json';

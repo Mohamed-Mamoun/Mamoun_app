@@ -61,6 +61,14 @@ class AppStrings {
   static const String validateNumber = 'Please Enter Your Phone Number';
   static const String validateEmail = 'Please Enter Your Email';
   static const String validatePass = 'Please Enter Your Password';
+
+  // Stepper
+  static const String stepperInfo1 =
+      'All Products in cart will be orderd with thier quantity.';
+  static const String stepperInfo2 =
+      'Your order will be delivered to you as soon as possible.';
+  static const String stepperInfo3 =
+      'You can see your order List in orders page in settings.';
 }
 
 class LocalString extends Translations {
@@ -103,6 +111,9 @@ class LocalString extends Translations {
           AppStrings.delivery: AppStrings.delivery,
           AppStrings.total: AppStrings.total,
           AppStrings.addProductsToCart: AppStrings.addProductsToCart,
+          AppStrings.stepperInfo1: AppStrings.stepperInfo1,
+          AppStrings.stepperInfo2: AppStrings.stepperInfo2,
+          AppStrings.stepperInfo3: AppStrings.stepperInfo3,
         },
         "ar": {
           AppStrings.login: "تسجيل دخول",
@@ -140,6 +151,11 @@ class LocalString extends Translations {
           AppStrings.delivery: "سعر التوصيل",
           AppStrings.total: "السعر الكلي",
           AppStrings.addProductsToCart: "اضف منتجات الي السلة",
+          AppStrings.stepperInfo1: "سيتم طلب كل المنتجات مع كمياتها من السلة",
+          AppStrings.stepperInfo2:
+              "سيتم التواصل معك وتوصيل طلبك في اقرب وقت ممكن",
+          AppStrings.stepperInfo3:
+              "يمكنك رؤية قائمة الطلبات الخاصة بك في صفحة الطلبات في الإعدادات",
         },
       };
 }

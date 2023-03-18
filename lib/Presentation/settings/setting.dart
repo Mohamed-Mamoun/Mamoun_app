@@ -1,25 +1,23 @@
 import 'package:advance_course/Presentation/Home/view_model.dart';
-import 'package:advance_course/Presentation/resources/color_manager.dart';
+import 'package:advance_course/Presentation/resources/font_manager.dart';
 import 'package:advance_course/Presentation/resources/strings_manager.dart';
 import 'package:advance_course/Presentation/resources/styles_manager.dart';
+import 'package:advance_course/Presentation/resources/theme_manager.dart';
 import 'package:advance_course/Presentation/widgets/back_button.dart';
+import 'package:advance_course/Presentation/widgets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
-class SettingsView extends StatefulWidget {
+class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
 
   @override
-  State<SettingsView> createState() => _SettingsViewState();
-}
-
-class _SettingsViewState extends State<SettingsView> {
-  bool isDarkThme = false;
-  @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final ThemesController themesController = Get.find();
     return GetBuilder<HomeViewModel>(
       init: Get.find<HomeViewModel>(),
       builder: (controller) => Scaffold(
@@ -28,9 +26,10 @@ class _SettingsViewState extends State<SettingsView> {
           leadingWidth: 100.w,
           automaticallyImplyLeading: false,
           centerTitle: true,
-          titleTextStyle: StylesManager().getMediumStyle(fontSize: 18.sp),
           title: Text(
             AppStrings.settings.tr,
+            style: Get.theme.textTheme.titleLarge,
+            textScaleFactor: 1,
           ),
         ),
         body: Column(
@@ -38,75 +37,114 @@ class _SettingsViewState extends State<SettingsView> {
             SizedBox(height: 10.h),
             ListTile(
               onTap: () {},
-              leading: Icon(
-                Icons.language,
-                size: 31,
-                color: Theme.of(context).primaryColor,
+              contentPadding: const EdgeInsets.all(8),
+              leading: Container(
+                width: 46,
+                height: 46,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: Colors.green.withAlpha(30)),
+                child: const Center(
+                  child: Icon(
+                    FontAwesomeIcons.listCheck,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+              title: Text(
+                "Your orders",
+                textScaleFactor: 1,
+                style: StylesManager().getMediumStyle(fontSize: 18.sp),
+              ),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+              ),
+            ),
+            Container(
+              height: 1,
+              margin: EdgeInsets.symmetric(vertical: 2.h),
+              color: Theme.of(context).dividerColor,
+            ),
+            ListTile(
+              onTap: () {
+                showLangButtomsheet();
+              },
+              contentPadding: const EdgeInsets.all(8),
+              leading: Container(
+                width: 46,
+                height: 46,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: Colors.orange.withAlpha(30)),
+                child: const Center(
+                  child: Icon(
+                    Icons.language,
+                    color: Colors.orange,
+                  ),
+                ),
               ),
               title: Text(
                 AppStrings.lan.tr,
                 textScaleFactor: 1,
                 style: StylesManager().getMediumStyle(fontSize: 18.sp),
               ),
-            ),
-            Container(
-              height: 1,
-              margin: EdgeInsets.symmetric(vertical: 2.h),
-              color: Theme.of(context).dividerColor,
-            ),
-            ListTile(
-              title: Text('              English',
-                  textScaleFactor: 1,
-                  style: StylesManager().getMediumStyle(fontSize: 20)),
-              trailing: Get.locale == AppStrings.english
-                  ? Icon(
-                      Icons.check,
-                      color: ColorManager.primary,
-                    )
-                  : null,
-              onTap: () {
-                Get.updateLocale(AppStrings.english);
-                GetStorage().write('lang', 'en');
-                GetStorage().save();
-              },
-            ),
-            ListTile(
-              title: Text('              العربية',
-                  textScaleFactor: 1,
-                  style: StylesManager().getMediumStyle(fontSize: 20)),
-              trailing: Get.locale == AppStrings.arabic
-                  ? Icon(
-                      Icons.check,
-                      color: ColorManager.primary,
-                    )
-                  : null,
-              onTap: () {
-                Get.updateLocale(AppStrings.arabic);
-                GetStorage().write('lang', 'ar');
-                GetStorage().save();
-              },
-            ),
-            Container(
-              height: 1,
-              margin: EdgeInsets.symmetric(vertical: 2.h),
-              color: Theme.of(context).dividerColor,
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.dark_mode,
-                size: 31,
-                color: Theme.of(context).primaryColor,
-              ),
-              title: Text(
-                AppStrings.darkMode.tr,
-                textScaleFactor: 1,
-                style: StylesManager().getMediumStyle(fontSize: 15.sp),
-              ),
-              trailing: IconButton(
-                icon: Icon(
-                  Get.isDarkMode ? Icons.sunny : Icons.dark_mode,
+              trailing: SizedBox(
+                width: 90,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                        Get.locale == AppStrings.arabic ? "العربية" : "English",
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                            color: Colors.grey.shade600,
+                            fontFamily: FontFamilyManager.fontFamily)),
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16,
+                    ),
+                  ],
                 ),
-                onPressed: () {},
+              ),
+            ),
+            Container(
+              height: 1,
+              margin: EdgeInsets.symmetric(vertical: 2.h),
+              color: Theme.of(context).dividerColor,
+            ),
+            ListTile(
+              onTap: () {
+                showAppearanceModal(theme, themesController.theme);
+              },
+              contentPadding: const EdgeInsets.all(8),
+              leading: Container(
+                width: 46,
+                height: 46,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: Colors.purple.withAlpha(30)),
+                child: const Center(
+                  child: Icon(
+                    Icons.dark_mode,
+                    color: Colors.purple,
+                  ),
+                ),
+              ),
+              title: Text('Appearance',
+                  textScaleFactor: 1,
+                  style: StylesManager().getMediumStyle(fontSize: 18.sp)),
+              trailing: SizedBox(
+                width: 90,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(themesController.theme,
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                            color: Colors.grey.shade600,
+                            fontFamily: FontFamilyManager.fontFamily)),
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16,
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
@@ -118,15 +156,25 @@ class _SettingsViewState extends State<SettingsView> {
               onTap: () {
                 controller.signOut();
               },
-              leading: Icon(
-                Icons.exit_to_app,
-                size: 32,
-                color: ColorManager.primary,
+              contentPadding: const EdgeInsets.all(10),
+              leading: Container(
+                width: 46,
+                height: 46,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: Colors.red.withAlpha(30)),
+                child: const Center(
+                  child: Icon(
+                    Icons.exit_to_app,
+                    color: Colors.red,
+                  ),
+                ),
               ),
-              title: Text(
-                AppStrings.signOut.tr,
-                textScaleFactor: 1,
-                style: StylesManager().getMediumStyle(fontSize: 18.sp),
+              title: Text(AppStrings.signOut.tr,
+                  textScaleFactor: 1,
+                  style: StylesManager().getMediumStyle(fontSize: 18.sp)),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
               ),
             ),
           ],

@@ -19,16 +19,13 @@ class TabBarWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TabBar(
-                labelColor:
-                    Get.isDarkMode ? ColorManager.white : ColorManager.black,
-                unselectedLabelStyle:
-                    StylesManager().getMediumStyle(fontSize: 16.sp),
-                labelStyle: StylesManager().getMediumStyle(fontSize: 16.sp),
+                labelColor: ColorManager.white,
+                unselectedLabelStyle: Get.textTheme.titleMedium,
+                labelStyle: Get.textTheme.titleMedium,
                 indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: ColorManager.primary.withOpacity(0.9)),
                 isScrollable: true,
-                // indicatorColor: ColorManager.primary,
                 indicatorWeight: 3,
                 tabs: [
                   Tab(
